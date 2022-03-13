@@ -1,4 +1,4 @@
-5FROM twobombs/thereminq-bonsai:realtime
+FROM twobombs/thereminq-bonsai:realtime
 
 RUN cd /thereminq/buildscripts && /usr/bin/time ./sycamore_spheres.sh
 
