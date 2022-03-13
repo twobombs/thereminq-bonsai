@@ -3,6 +3,14 @@ FROM twobombs/cudacluster:gaming
 # install features
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
+# install bonsai
+RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt install -y git cmake-curses-gui && apt clean all
+RUN apt-get update && apt-get -y install time build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev freeglut3-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+
+RUN git clone https://github.com/twobombs/Bonsai.git
+RUN cd /Bonsai/runtime/lib && mv linux linux_temp && mv linux_fpic_glew linux
+RUN cd /Bonsai/runtime && cmake -DCMAKE_CXX_COMPILER=mpicxx -DUSE_CUB=0 -DUSE_OPENGL=1 -DCUDA_CUDART_LIBRARY=/usr/local/cuda/lib64/libcudart.so && make && cd /Bonsai/tools/IO && make
+
 # node run & benchmark script, make runnable 
 COPY runscripts/run* /root/
 RUN chmod 744 /root/run*
