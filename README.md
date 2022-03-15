@@ -7,6 +7,9 @@ Edit, create and deploy ThereminQ Bonsai visualisations
 - If you get an error similar to "Cannot connect to :0" please look at http://wiki.ros.org/docker/Tutorials/GUI $ xhost +local:root
 - If you get an error similar to "Cannot compile shader" please select nvidia as your primary OpenGL source $ prime-select nvidia
 
+![Screenshot from 2022-03-15 20-05-42](https://user-images.githubusercontent.com/12692227/158462197-9ed0bb66-cb50-4507-a4aa-58a001141386.png)
+
+
 Images by ThereminQ's Tipsy visualisation scripts can be viewed and downloaded at https://github.com/twobombs/thereminq-graphs
 
 ![Screenshot_from_2021-09-25_08-52-34 (1)](https://user-images.githubusercontent.com/12692227/134770011-8db48546-4853-4735-a980-cfc866d1786f.png)
