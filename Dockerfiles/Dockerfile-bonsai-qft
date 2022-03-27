@@ -1,6 +1,6 @@
 FROM twobombs/thereminq-bonsai:realtime
 
-RUN cd /thereminq/buildscripts && /usr/bin/time ./sycamore_spheres.sh
+RUN cd /thereminq/buildscripts && /usr/bin/time ./makeqftipsy.sh
 
 EXPOSE 22 6080 8801-8811
-ENTRYPOINT /root/run-bonsai
+ENTRYPOINT /root/run-bonsai-qft-cosmos
