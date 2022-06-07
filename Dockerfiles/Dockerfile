@@ -14,6 +14,11 @@ RUN git clone https://github.com/twobombs/Bonsai.git
 RUN cd /Bonsai/runtime/lib && mv linux linux_temp && mv linux_fpic_glew linux
 RUN cd /Bonsai/runtime && cmake -DCMAKE_CXX_COMPILER=mpicxx -DUSE_CUB=0 -DUSE_OPENGL=1 -DCUDA_CUDART_LIBRARY=/usr/local/cuda/lib64/libcudart.so && make && cd /Bonsai/tools/IO && make
 
+# install haskell, z3, num-utils, crackNum + dependancies
+RUN apt-get install -y z3 num-utils && apt clean all
+RUN curl -sSL https://get.haskellstack.org/ | sh
+RUN cd crackNum && stack path --local-bin && stack setup && stack init && stack build && stack install && stack clean && rm -R /crackNum
+
 # node run & benchmark script, make runnable 
 COPY runscripts/run* /root/
 RUN chmod 744 /root/run*
