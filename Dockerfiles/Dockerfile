@@ -4,7 +4,7 @@ FROM twobombs/cudacluster:dev
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
 # fetch scripts and data repos
-RUN git clone https://github.com/twobombs/thereminq.git
+RUN git clone https://github.com/LeventErkok/crackNum.git && git clone https://github.com/twobombs/thereminq.git
 
 # install bonsai
 RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt install -y git cmake-curses-gui && apt clean all
