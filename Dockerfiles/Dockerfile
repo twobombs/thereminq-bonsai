@@ -1,4 +1,4 @@
-FROM twobombs/cudacluster:gaming
+FROM twobombs/cudacluster:vulkan
 
 # install features
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
