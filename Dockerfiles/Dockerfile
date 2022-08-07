@@ -27,4 +27,4 @@ RUN chmod 744 /root/run*
 RUN mkdir /root/logs && mv /var/log/*.log /root/logs/
 
 EXPOSE 22 80 8801-8811
-ENTRYPOINT /root/run-node
+ENTRYPOINT /root/run-bonsai
