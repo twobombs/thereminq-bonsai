@@ -11,5 +11,8 @@ nvidia-smi
 
 startxfce4 &
 
+export DISPLAY=:0&&xterm -e "xset s off" &
+export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
+
 cd /Bonsai/runtime/ && ./bonsai2_slowdust --displayfps -t 0.00001 --reducebodies 3 -i /thereminq/buildscripts/tipsy-qube_hexdump.bin &
 cd /thereminq/buildscripts && ./makeqftipsy.sh && cd /Bonsai/runtime/ && ./bonsai2_slowdust --displayfps -t 0.00001 --reducebodies 3 -i /thereminq/buildscripts/tipsy-qube_hexdump.bin
