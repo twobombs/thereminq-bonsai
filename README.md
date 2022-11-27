@@ -1,6 +1,13 @@
-## Deploy Bonsai ( https://github.com/treecode/Bonsai ) visualisation - requirements: Running NVidia X, CUDA and NVidia-Docker on host 
+## Deploy Bonsai visualisation of Qrack output 
+
+https://github.com/treecode/Bonsai
+
+https://github.com/vm6502q/qrack
+
+requirements: Running NVidia X, CUDA and NVidia-Docker on host 
 <br>
-Edit, create and deploy ThereminQ Bonsai visualisations
+
+Edit, creates and deploys ThereminQ Bonsai visualisations
 
 - docker run --gpus all -d -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -p 6080:6080 -v /run/user/1000/gdm/Xauthority:/root/.Xauthority -h $HOSTNAME twobombs/thereminq-bonsai 
 
