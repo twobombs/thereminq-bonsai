@@ -13,6 +13,7 @@ Edit, creates and deploys ThereminQ Bonsai visualisations
 
 - If you get an error similar to "Cannot connect to :0" please look at http://wiki.ros.org/docker/Tutorials/GUI $ xhost +local:root
 - If you get an error similar to "Cannot compile shader" please select nvidia as your primary OpenGL source $ prime-select nvidia
+- If you get a succesful initialisation followed by a codedump : ulimit -c unlimited #deepmagick
 
 ![Screenshot from 2022-03-15 20-05-42](https://user-images.githubusercontent.com/12692227/158462197-9ed0bb66-cb50-4507-a4aa-58a001141386.png)
 
