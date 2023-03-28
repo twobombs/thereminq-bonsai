@@ -2,7 +2,7 @@ FROM twobombs/thereminq-bonsai
 
 # add and convert validation csv data
 RUN tar -xf /thereminq/miscfiles/validation_method_comparison_all.tar.gz -C /thereminq/buildscripts/
-RUN cd /thereminq/buildscripts/validation_method_comparison_all && ../import_csv.sh
+RUN cd /thereminq/buildscripts/validation_method_comparison_all && chmod 744 ../import_csv.sh && ../import_csv.sh 
 
 EXPOSE 22 6080 8801-8811
 ENTRYPOINT /root/run-bonsai-validate
