@@ -49,7 +49,7 @@ echo "00010000" > version.hex
 # ==== here end tipsy special declarations =========
 
 # count the total amount of lines with values
-wc -l measured.flex | tr " " "\n"| grep -v measured.hex > rows.dec
+wc -l measured.flex | tr " " "\n"| grep -v measured.flex > rows.dec
 
 # derive the amount of measured points for array dimension declaration
 rows=$(<rows.dec)
