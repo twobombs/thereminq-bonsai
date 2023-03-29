@@ -17,9 +17,6 @@ awk '{print $11}' csvoutput.dec > csvoutput11.dec
 awk '{print $12}' csvoutput.dec > csvoutput12.dec
 awk '{print $13}' csvoutput.dec > csvoutput13.dec
 
-# checks
-wc -l csvoutput*
-
 # convert 13x32k points to hex
 for a in $(< csvoutput1.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput1.flex &
 for a in $(< csvoutput2.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput2.flex &
@@ -36,6 +33,9 @@ for a in $(< csvoutput12.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) 
 for a in $(< csvoutput13.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput13.flex
 
 sleep 10
+
+# checks
+wc -l csvoutput*
 
 paste csvoutput1.flex csvoutput2.flex  csvoutput1.flex csvoutput3.flex  csvoutput1.flex csvoutput4.flex  csvoutput1.flex csvoutput5.flex  csvoutput1.flex csvoutput6.flex  csvoutput1.flex csvoutput7.flex  csvoutput1.flex csvoutput8.flex  csvoutput1.flex csvoutput9.flex  csvoutput1.flex csvoutput10.flex  csvoutput1.flex csvoutput11.flex  csvoutput1.flex csvoutput12.flex  csvoutput1.flex csvoutput13.flex > measured.flex
 
