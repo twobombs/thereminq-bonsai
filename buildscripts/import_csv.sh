@@ -37,5 +37,39 @@ for a in $(< csvoutput13.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) 
 
 sleep 10
 
-# printf '%08X\n' $(< csvoutput.dec) > csvoutput.hex
-# split -d -n l/11 --additional-suffix='.hex' csvoutput.hex hexcsvoutput
+paste csvoutput1.flex csvoutput2.flex  csvoutput1.flex csvoutput3.flex  csvoutput1.flex csvoutput4.flex  csvoutput1.flex csvoutput5.flex  csvoutput1.flex csvoutput6.flex  csvoutput1.flex csvoutput7.flex  csvoutput1.flex csvoutput8.flex  csvoutput1.flex csvoutput9.flex  csvoutput1.flex csvoutput10.flex  csvoutput1.flex csvoutput11.flex  csvoutput1.flex csvoutput12.flex  csvoutput1.flex csvoutput13.flex > measured.flex
+
+# ==== here starts tipsy header declarations ======
+# T = time
+echo "0000000000000000" > time.hex
+echo "00030000" > ndim.hex
+echo "00000000" > nsph.hex
+echo "00000000" > ndark.hex
+echo "00010000" > version.hex
+# ==== here end tipsy special declarations =========
+
+# count the total amount of lines with values
+wc -l measured.flex | tr " " "\n"| grep -v measured.hex > rows.dec
+
+# derive the amount of measured points for array dimension declaration
+rows=$(<rows.dec)
+echo $(( rows / 2 )) > points.dec
+
+# dim a square by making a real sqr of the amount of points with margin
+points=$(<points.dec)
+pointssqr=$(echo "$points" | awk '{print sqrt($1)}')
+
+# integer the sqrt, subtract margin
+square=$( echo $pointssqr | awk '{printf "%.0f\n", $1}')
+margin=$(( 1 ))
+square=$((square - margin))
+echo $square > cube.dec
+
+# announce and declare raw points
+# make real and tipsy scaling 
+# cube dimensions and convert value to hex for header
+
+echo "original amount of measured values" $points
+echo "view will be "$square "x" $square
+
+
