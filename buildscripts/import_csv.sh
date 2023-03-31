@@ -18,19 +18,19 @@ awk '{print $12}' csvoutput.dec | tr " " "\n" > csvoutput12.dec
 awk '{print $13}' csvoutput.dec | tr " " "\n" > csvoutput13.dec
 
 # convert 13x32k points to hex
-for a in $(< csvoutput1.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput1.flex &
-for a in $(< csvoutput2.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput2.flex &
-for a in $(< csvoutput3.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput3.flex &
-for a in $(< csvoutput4.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput4.flex &
-for a in $(< csvoutput5.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput5.flex &
-for a in $(< csvoutput6.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput6.flex &
-for a in $(< csvoutput7.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput7.flex &
-for a in $(< csvoutput8.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput8.flex &
-for a in $(< csvoutput9.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput9.flex &
-for a in $(< csvoutput10.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput10.flex &
-for a in $(< csvoutput11.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput11.flex &
-for a in $(< csvoutput12.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput12.flex &
-for a in $(< csvoutput13.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done > csvoutput13.flex
+for a in $(< csvoutput1.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput1.flex &
+for a in $(< csvoutput2.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput2.flex &
+for a in $(< csvoutput3.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput3.flex &
+for a in $(< csvoutput4.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput4.flex &
+for a in $(< csvoutput5.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput5.flex &
+for a in $(< csvoutput6.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput6.flex &
+for a in $(< csvoutput7.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput7.flex &
+for a in $(< csvoutput8.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput8.flex &
+for a in $(< csvoutput9.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput9.flex &
+for a in $(< csvoutput10.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput10.flex &
+for a in $(< csvoutput11.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput11.flex &
+for a in $(< csvoutput12.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput12.flex &
+for a in $(< csvoutput13.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput13.flex
 
 sleep 10
 
