@@ -54,7 +54,7 @@ wc -l measured.flex | tr " " "\n"| grep -v measured.flex > rows.dec
 wc -l csvoutput1.dec tr " " "\n"| grep -v collumns.dec > collumns.dec
 
 # create collumn coordinades in flex
-for i in `cat square.dec` ; do cat 
+# for i in `cat square.dec` ; do cat 
 
 # derive the amount of measured points for array dimension declaration
 rows=$(<rows.dec)
