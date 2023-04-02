@@ -77,6 +77,6 @@ echo $square > cube.dec
 echo "original amount of measured values" $points
 echo "view will be "$square "x" $square
 
-# imcomplete
+# incomplete
 paste time.hex ndim.hex nsph.hex ndark.hex version.hex > header.hex
 
