@@ -59,6 +59,7 @@ wc -l measured.flex | tr " " "\n"| grep -v measured.flex > rows.dec
 # derive the amount of measured points for array dimension declaration
 rows=$(<rows.dec)
 echo $(( rows / 2 )) > points.dec
+printf '%08X\n' $(< points.dec) > points.hex
 
 # dim a square by making a real sqr of the amount of points with margin
 points=$(<points.dec)
@@ -77,6 +78,5 @@ echo $square > cube.dec
 echo "original amount of measured values" $points
 echo "view will be "$square "x" $square
 
-# incomplete
-paste time.hex ndim.hex nsph.hex ndark.hex version.hex > header.hex
-
+# construct hex header
+paste time.hex points.hex ndim.hex nsph.hex ndark.hex points.hex version.hex > header.hex
