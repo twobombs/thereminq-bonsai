@@ -17,7 +17,7 @@ awk '{print $11}' csvoutput.dec | tr " " "\n" > csvoutput11.dec
 awk '{print $12}' csvoutput.dec | tr " " "\n" > csvoutput12.dec
 awk '{print $13}' csvoutput.dec | tr " " "\n" > csvoutput13.dec
 
-# pas SDRP value in row 0 to 3 decs fill to make y value sane
+# pad SDRP value in row 0 to 3 decs to make y value sane
 for a in $(< csvoutput0.dec); do printf "000\r%s\n" $a ; done > csvoutput1.dec
 
 # convert 13x32k points to hex
