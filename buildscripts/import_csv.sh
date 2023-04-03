@@ -51,7 +51,7 @@ echo "00010000" > version.hex
 
 # count the total amount of lines for local ans all values
 wc -l measured.flex | tr " " "\n"| grep -v measured.flex > rows.dec
-wc -l csvoutput1.dec tr " " "\n"| grep -v collumns.dec > collumns.dec
+wc -l csvoutput1.dec tr " " "\n"| grep -v csvoutput1.dec > collumns.dec
 
 # create collumn coordinades in flex
 # for i in `cat square.dec` ; do cat 
@@ -86,8 +86,8 @@ echo "view will be "$square "x" $square
 # create y coordinates in dec/flex for stacking teh layercaek
 collumns=$(<collumns.dec)
 seq 1 1 13 > collumnsy.dec
-for a in $(< collumsy.dec); do /root/.local/bin/crackNum -f sp a$ ; done > collumnsy.flex
-for a in $(< collumsy.flex); do yes $a | head -n $collumns > collumns${a}.flex
+for a in $(< collumnsy.dec); do /root/.local/bin/crackNum -f sp a$ ; done > collumnsy.flex
+for a in $(< collumnsy.flex); do yes $a | head -n $collumns > collumns${a}.flex
 
 # construct hex header
 paste time.hex points.hex ndim.hex nsph.hex ndark.hex points.hex version.hex > header.hex
