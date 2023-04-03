@@ -49,6 +49,11 @@ echo "00000000" > ndark.hex
 echo "00010000" > version.hex
 # ==== here end tipsy special declarations =========
 
+# create flex compatible file
+paste csvoutput1.flex csvoutput2.flex  csvoutput1.flex csvoutput3.flex  csvoutput1.flex csvoutput4.flex  csvoutput1.flex csvoutput5.flex  csvoutput1.flex csvoutput6.flex  csvoutput1.flex csvoutput7.flex  csvoutput1.flex csvoutput8.flex  csvoutput1.flex csvoutput9.flex  csvoutput1.flex csvoutput10.flex  csvoutput1.flex csvoutput11.flex  csvoutput1.flex csvoutput12.flex  csvoutput1.flex csvoutput13.flex | sed 's/\t\t*/\n/g' > measured.flex
+# ... and checks
+wc -l measured.flex
+
 # count the total amount of lines for local ans all values
 wc -l measured.flex | tr " " "\n"| grep -v measured.flex > rows.dec
 wc -l csvoutput1.dec tr " " "\n"| grep -v csvoutput1.dec > collumns.dec
