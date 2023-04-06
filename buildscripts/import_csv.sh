@@ -17,7 +17,7 @@ awk '{print $11}' csvoutput.dec | tr " " "\n" > csvoutput11.dec
 awk '{print $12}' csvoutput.dec | tr " " "\n" > csvoutput12.dec
 awk '{print $13}' csvoutput.dec | tr " " "\n" > csvoutput13.dec
 
-# pad SDRP value in row 0 to 3 decs to make x value sane
+# pad SDRP value in row 0 to 3 decs to make m & x value sane
 for a in $(< csvoutput0.dec); do printf "000\r%s\n" $a ; done > csvoutput1.dec
 
 # convert 13x32k points to hex
@@ -92,12 +92,20 @@ echo "view will be "$square "x" $square
 collumns=$(<collumns.dec)
 seq 1 1 13 > collumnsy.dec
 for a in $(< collumnsy.dec); do /root/.local/bin/crackNum -f sp a$ ; done > collumnsy.flex
-for a in $(< collumnsy.flex); do yes $a | head -n $collumns > collumns${a}.flex
+# borken
+# for a in $(< collumnsy.flex); do yes $a | head -n $collumns > collumns${a}.flex
 
 # construct hex header
 paste time.hex points.hex ndim.hex nsph.hex ndark.hex points.hex version.hex > header.hex
 
 # create flex compatible file
-paste csvoutput1.flex csvoutput2.flex  csvoutput1.flex csvoutput3.flex  csvoutput1.flex csvoutput4.flex  csvoutput1.flex csvoutput5.flex  csvoutput1.flex csvoutput6.flex  csvoutput1.flex csvoutput7.flex  csvoutput1.flex csvoutput8.flex  csvoutput1.flex csvoutput9.flex  csvoutput1.flex csvoutput10.flex  csvoutput1.flex csvoutput11.flex  csvoutput1.flex csvoutput12.flex  csvoutput1.flex csvoutput13.flex | sed 's/\t\t*/\n/g' > measured.flex
-# ... and checks
-wc -l measured.flex
+paste csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex > csvoutput1.fhex
+paste csvoutput2.flex csvoutput3.flex csvoutput4.flex csvoutput5.flex csvoutput6.flex csvoutput7.flex csvoutput8.flex csvoutput9.flex csvoutput10.flex csvoutput11.flex csvoutput12.flex csvoutput13.flex > csvoutputx.fhex 
+
+# assemble/weave final hex, convert to bin
+paste header.hex csvoutput1.fhex csvoutputx.fhex csvoutputx.fhex csvoutput1.fhex displacex.hex displacey.hex displacez.hex dummy.hex dummy.hex csvoutput1.fhex csvoutputx.fhex > tipsy-csv.hex
+
+# convert int hex string data as a bin file
+xxd -r -p tipsy-csv.hex tipsy-csv.bin
+# aaaand convert to little indian
+hexdump -v -e '1/4 "%08x"' -e '"\n"' tipsy-csv.bin | xxd -r -p >tipsy-csv_hexdump.bin
