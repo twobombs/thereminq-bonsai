@@ -56,7 +56,7 @@ wc -l measured.flex
 
 # count the total amount of lines for local ans all values
 wc -l measured.flex | tr " " "\n"| grep -v measured.flex > rows.dec
-wc -l csvoutput1.dec tr " " "\n"| grep -v csvoutput1.dec > collumns.dec
+wc -l csvoutput1.dec | tr " " "\n"| grep -v csvoutput1.dec > collumns.dec
 
 # create collumn coordinades in flex
 # for i in `cat square.dec` ; do cat 
