@@ -20,11 +20,15 @@ awk '{print $13}' csvoutput.dec | tr " " "\n" > csvoutput13.dec
 # pad SDRP value in row 0 to 3 decs to make m & x value sane
 # for a in $(< csvoutput0.dec); do printf "000\r%s\n" $a ; done > csvoutput1.dec
 
+# count the total amount of lines for one layer and dim for that
+wc -l csvoutput1.dec | tr " " "\n"| grep -v csvoutput1.dec > collumns.dec
+cat collumns.dec
+
 # derive tipsy factor
 tipsy=0.1
 
 # convert 13x32k points to hex
-for a in $(< csvoutput1.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput1.flex &
+for a in $(< csvoutput1.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a/$tipsy | bc -l) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput1.flex &
 for a in $(< csvoutput2.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a/$tipsy | bc -l) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput2.flex &
 for a in $(< csvoutput3.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a/$tipsy | bc -l) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput3.flex &
 for a in $(< csvoutput4.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a/$tipsy | bc -l) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > csvoutput4.flex &
@@ -53,13 +57,13 @@ echo "00010000" > version.hex
 # ==== here end tipsy special declarations =========
 
 # create flex compatible file
-paste csvoutput1.flex csvoutput2.flex  csvoutput1.flex csvoutput3.flex  csvoutput1.flex csvoutput4.flex  csvoutput1.flex csvoutput5.flex  csvoutput1.flex csvoutput6.flex  csvoutput1.flex csvoutput7.flex  csvoutput1.flex csvoutput8.flex  csvoutput1.flex csvoutput9.flex  csvoutput1.flex csvoutput10.flex  csvoutput1.flex csvoutput11.flex  csvoutput1.flex csvoutput12.flex  csvoutput1.flex csvoutput13.flex | sed 's/\t\t*/\n/g' > measured.flex
+paste csvoutput1.flex csvoutput2.flex  csvoutput1.flex csvoutput3.flex csvoutput1.flex csvoutput4.flex csvoutput1.flex csvoutput5.flex  csvoutput1.flex csvoutput6.flex csvoutput1.flex csvoutput7.flex csvoutput1.flex csvoutput8.flex  csvoutput1.flex csvoutput9.flex  csvoutput1.flex csvoutput10.flex  csvoutput1.flex csvoutput11.flex  csvoutput1.flex csvoutput12.flex csvoutput1.flex csvoutput13.flex | sed 's/\t\t*/\n/g' > measured.flex
 # ... and checks
 wc -l measured.flex
 
 # count the total amount of lines for local ans all values
 wc -l measured.flex | tr " " "\n"| grep -v measured.flex > rows.dec
-wc -l csvoutput1.dec | tr " " "\n"| grep -v csvoutput1.dec > collumns.dec
+# wc -l csvoutput1.dec | tr " " "\n"| grep -v csvoutput1.dec > collumns.dec
 
 # create collumn coordinades in flex
 # for i in `cat square.dec` ; do cat 
@@ -94,9 +98,7 @@ echo "view will be "$square "x" $square
 # create y coordinates in dec/flex for stacking teh layercaek
 collumns=$(<collumns.dec)
 seq 1 1 13 > collumnsy.dec
-for a in $(< collumnsy.dec); do /root/.local/bin/crackNum -f sp a$ ; done > collumnsy.flex
-# borken
-# for a in $(< collumnsy.flex); do yes $a | head -n $collumns > collumns${a}.flex
+for a in $(< collumnsy.dec); do /root/.local/bin/crackNum -f sp -- $(echo a$*$tipsy | bc -l) | tr -d ' ' | tr -d 'Hexlayout:' ; done > collumnsy.flex
 
 # construct hex header
 paste time.hex points.hex ndim.hex nsph.hex ndark.hex points.hex version.hex > header.hex
@@ -106,7 +108,7 @@ paste csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1
 paste csvoutput2.flex csvoutput3.flex csvoutput4.flex csvoutput5.flex csvoutput6.flex csvoutput7.flex csvoutput8.flex csvoutput9.flex csvoutput10.flex csvoutput11.flex csvoutput12.flex csvoutput13.flex > csvoutputx.fhex 
 
 # assemble/weave final hex, convert to bin
-paste header.hex csvoutput1.fhex csvoutputx.fhex csvoutputx.fhex csvoutput1.fhex displacex.hex displacey.hex displacez.hex dummy.hex dummy.hex csvoutput1.fhex csvoutputx.fhex > tipsy-csv.hex
+paste header.hex csvoutput1.fhex csvoutputx.fhex dummy.hex csvoutput1.fhex displacex.hex displacey.hex displacez.hex dummy.hex dummy.hex csvoutput1.fhex csvoutputx.fhex > tipsy-csv.hex
 
 # convert int hex string data as a bin file
 xxd -r -p tipsy-csv.hex tipsy-csv.bin
