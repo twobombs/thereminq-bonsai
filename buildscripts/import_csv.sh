@@ -1,5 +1,6 @@
 #!/bin/bash
-# fetch csv, clean up for decimal, convert to hex
+# extract https://github.com/twobombs/thereminq-bonsai/blob/main/miscfiles/validation_method_comparison_all.tar.gz
+# this script fetches the csv, cleans up for decimals, convert to hex, bin and tipsy format
 #
 # visualisation is a csv import of validation odt as delivered by dan strano
 # this visualisation is semi-custom made to display the 12 validation modes
