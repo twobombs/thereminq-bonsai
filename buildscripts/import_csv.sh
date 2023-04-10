@@ -95,10 +95,11 @@ echo $square > cube.dec
 echo "original amount of measured values" $points
 echo "view will be "$square "x" $square
 
-# create y coordinates in dec/flex for stacking teh layercaek
+# create y coordinates in dec/flex for stacking teh layercaek 12x
 collumns=$(<collumns.dec)
 seq 1 1 12 > collumnsy.dec
 for a in $(< collumnsy.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a*$tipsy | bc -l) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > collumnsy.flex
+cat collumnsy.flex | awk '{for(i=0;i<$($collumns);i++)print}' > collumnsy.fhex
 
 # construct hex header
 paste time.hex points.hex ndim.hex nsph.hex ndark.hex points.hex version.hex > header.hex
