@@ -2,7 +2,7 @@
 # extract https://github.com/twobombs/thereminq-bonsai/blob/main/miscfiles/validation_method_comparison_all.tar.gz
 # this script fetches the csv, cleans up for decimals, convert to hex, bin and tipsy format
 #
-# visualisation is a csv import of validation odt as delivered by dan strano
+# visualisation is a csv import of validation odt as delivered by dan strano https://github.com/unitaryfund/qrack
 # this visualisation is semi-custom made to display the 12 validation modes
 # adheres to basic csv import filters with a custom 12x 31k datapoint mod
 
