@@ -97,7 +97,7 @@ echo "view will be "$square "x" $square
 
 # create y coordinates in dec/flex for stacking teh layercaek
 collumns=$(<collumns.dec)
-seq 1 1 13 > collumnsy.dec
+seq 1 1 12 > collumnsy.dec
 for a in $(< collumnsy.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a*$tipsy | bc -l) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > collumnsy.flex
 
 # construct hex header
