@@ -1,5 +1,27 @@
 #!/bin/bash
 # fetch csv, clean up for decimal, convert to hex
+#
+# visualisation is a csv import of validation odt as delivered by dan strano
+# this visualisation is semi-custom made to display the 12 validation modes
+# adheres to basic csv import filters with a custom 12x 31k datapoint mod
+
+# the 12 validation models are:
+
+# Gold standard
+# Mirror
+# Y
+# X
+# X_0
+# MARP 
+# Intercept
+# SST
+# SSR
+# Residuals
+# Residual w/ Intercept
+# Y
+# Residual w/ Intercept
+
+# note: some datapoints are invisible as they have negative values and can only be displayed using the p button
 
 cat *.csv | tr "," ' '  | sed 's/[a-zA-Z]\+//g' | tail -n +2 | grep -v '#/' | head -n -41 > csvoutput.dec
 
