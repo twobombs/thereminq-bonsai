@@ -95,21 +95,21 @@ echo $square > cube.dec
 echo "original amount of measured values" $points
 echo "view will be "$square "x" $square
 
-# create y coordinates in dec/flex for stacking teh layercaek 12x
+# create y coordinates in dec/flex for stacking teh layercaek
 collumns=$(<collumns.dec)
 seq 1 1 12 > collumnsy.dec
-for a in $(< collumnsy.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a*$tipsy | bc -l) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > collumnsy.flex
-cat collumnsy.flex | awk '{for(i=0;i<$($collumns);i++)print}' > collumnsy.fhex
+for a in $(< collumnsy.dec); do /root/.local/bin/crackNum -f sp -- $(echo $a/0.1 | bc -l) | grep "Hex layout" ; done | tr -d ' ' | tr -d 'Hexlayout:' > collumnsy.flex
+cat collumnsy.flex | awk '{for(i=0;i<31106;i++)print}' > collumnsy.fhex
 
 # construct hex header
 paste time.hex points.hex ndim.hex nsph.hex ndark.hex points.hex version.hex > header.hex
 
 # create flex compatible file
-paste csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex > csvoutput1.fhex
-paste csvoutput2.flex csvoutput3.flex csvoutput4.flex csvoutput5.flex csvoutput6.flex csvoutput7.flex csvoutput8.flex csvoutput9.flex csvoutput10.flex csvoutput11.flex csvoutput12.flex csvoutput13.flex > csvoutputx.fhex 
+cat csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex csvoutput1.flex > csvoutput1.fhex
+cat csvoutput2.flex csvoutput3.flex csvoutput4.flex csvoutput5.flex csvoutput6.flex csvoutput7.flex csvoutput8.flex csvoutput9.flex csvoutput10.flex csvoutput11.flex csvoutput12.flex csvoutput13.flex > csvoutputx.fhex 
 
 # assemble/weave final hex, convert to bin
-paste header.hex csvoutput1.fhex csvoutputx.fhex dummy.hex csvoutput1.fhex displacex.hex displacey.hex displacez.hex dummy.hex dummy.hex csvoutput1.fhex csvoutputx.fhex > tipsy-csv.hex
+paste header.hex csvoutputx.fhex csvoutput1.fhex collumnsy.fhex csvoutputx.fhex displacex.hex displacey.hex displacez.hex dummy.hex dummy.hex csvoutput1.fhex csvoutputx.fhex > tipsy-csv.hex
 
 # convert int hex string data as a bin file
 xxd -r -p tipsy-csv.hex tipsy-csv.bin
