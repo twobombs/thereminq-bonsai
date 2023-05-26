@@ -24,5 +24,8 @@ RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && c
 # BigQrack install & dependancies
 RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON .. && make -i -k -j 2 all && make install
 
+# generate build-time CPU driven qcircuits
+cd qrack/_build && ./benchmarks --optimal-cpu --benchmark-samples=1 --measure-shots=100 --max-qubits=27 --benchmark-depth=27 test_circuit_t_nn_generate_and_load --measure-output=/var/log/qrack/"test_circuit_t_nn_$(date +%F_%R_%S).log" &
+
 EXPOSE 22 80 8801-8811
 ENTRYPOINT /root/run-qcircuit
