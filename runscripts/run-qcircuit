@@ -1,4 +1,4 @@
-cd qrack128/_build && ./benchmarks -optimal --single --max-qubits=27 --benchmark-depth=27 test_circuit_t_nn_generate_and_load --measure-output=/var/log/qrack/"test_circuit_t_nn_$(date +%F_%R_%S).log" &
+cd qrack/_build && ./benchmarks -optimal --single --max-qubits=27 --benchmark-depth=27 test_circuit_t_nn_generate_and_load --measure-output=/var/log/qrack/"test_circuit_t_nn_$(date +%F_%R_%S).log" &
 
 watch -n1 nvidia-smi
 
