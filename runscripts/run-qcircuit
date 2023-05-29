@@ -3,6 +3,10 @@
 
 cd qrack/_build && ./benchmarks --optimal-cpu --samples=1 --single --measure-shots=10 --max-qubits=25 --benchmark-depth=25 test_circuit_t_nn_generate_and_load --measure-output=/var/log/qrack/"test_circuit_t_nn_$(date +%F_%R_%S).log" &
 
+sleep 10
+
+cd circuit_t_nn && cat *.qgc | tr "," ' ' | sed 's/[a-zA-Z]\+//g' | sed 's/(/\n/g' | sed 's/)/\n/g' | sed 's/ /\n/g' | grep -a "0." > ../circuit_t_nn_coorinates.qgc
+
 watch -n1 nvidia-smi
 
 tail -f /dev/null
