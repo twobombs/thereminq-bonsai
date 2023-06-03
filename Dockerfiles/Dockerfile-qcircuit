@@ -30,4 +30,4 @@ RUN mkdir /var/log/qrack
 RUN cd root && ./run-qcircuit
 
 EXPOSE 22 80 8801-8811
-ENTRYPOINT /root/run-qcircuit
+ENTRYPOINT /root/run
