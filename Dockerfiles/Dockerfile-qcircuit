@@ -23,10 +23,11 @@ RUN apt-get update && apt-get -y install build-essential cmake wget vim-common o
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON .. && make -i -k -j 2 all && make install
 # BigQrack install & dependancies
 RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=12 -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_OCL_MEM_GUARDS=ON .. && make -i -k -j 2 all && make install
+# log dir
+RUN mkdir /var/log/qrack
 
-# generate build-time CPU driven qcircuits
-RUN mkdir /var/log/qrack && cd /qrack/_build && ./benchmarks --optimal-cpu --samples=1 --single --measure-shots=10 --max-qubits=25 --benchmark-depth=25 test_circuit_t_nn_generate_and_load --measure-output=/var/log/qrack/"test_circuit_t_nn_$(date +%F_%R_%S).log" & && sleep 10
-RUN cd /qrack/_build && cd circuit_t_nn && cat *.qgc | tr "," ' ' | sed 's/[a-zA-Z]\+//g' | sed 's/(/\n/g' | sed 's/)/\n/g' | sed 's/ /\n/g' | grep -a "0." > ../circuit_t_nn_coorinates.qgc
+# generate build-time CPU driven qcircuits with vector analysis
+./root/run-qcircuit
 
 EXPOSE 22 80 8801-8811
 ENTRYPOINT /root/run-qcircuit
