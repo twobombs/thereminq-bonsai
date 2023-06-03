@@ -27,7 +27,7 @@ RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _buil
 RUN mkdir /var/log/qrack
 
 # generate build-time CPU driven qcircuits with vector analysis
-./root/run-qcircuit
+RUN cd root && ./run-qcircuit
 
 EXPOSE 22 80 8801-8811
 ENTRYPOINT /root/run-qcircuit
