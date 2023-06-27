@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-cd qrack/_build && ./benchmarks --optimal-cpu --samples=1 --single --measure-shots=10 --max-qubits=25 --benchmark-depth=25 test_circuit_t_nn_generate_and_load --measure-output=/var/log/qrack/"test_circuit_t_nn_$(date +%F_%R_%S).log" &
+cd /qrack/_build && ./benchmarks --optimal-cpu --samples=1 --single --measure-shots=10 --max-qubits=25 --benchmark-depth=25 test_circuit_t_nn_generate_and_load --measure-output=/var/log/qrack/"test_circuit_t_nn_$(date +%F_%R_%S).log" &
 
 sleep 100
 
