@@ -12,8 +12,12 @@ Edit, creates and deploys ThereminQ Bonsai visualisations
 - docker run --gpus all -d -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -p 6080:6080 -v /run/user/1000/gdm/Xauthority:/root/.Xauthority -h $HOSTNAME twobombs/thereminq-bonsai 
 
 - If you get an error similar to "Cannot connect to :0" please look at http://wiki.ros.org/docker/Tutorials/GUI $ xhost +local:root
-- If you get an error similar to "Cannot compile shader" please select nvidia as your primary OpenGL source $ prime-select nvidia
-- If you get a succesful initialisation followed by a coredump $ ulimit -c unlimited 
+- If you get a succesful initialisation followed by a coredump set : ulimit -c unlimited 
+- If you can't get NVidia GPU to render OpenGL content with an intel iGPU platform install nvidia-prime and set renderer to nvidia
+- If you get an error similar to "Cannot compile shader" please select nvidia as your primary OpenGL source : prime-select nvidia
+  
+![Screenshot from 2023-08-08 13-00-13](https://github.com/twobombs/thereminq-bonsai/assets/12692227/c54187c1-9ab6-4811-9153-ab52cc886def)
+
 
 -----------
 
