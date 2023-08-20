@@ -6,6 +6,9 @@ RUN apt-get update && apt-get -y install build-essential cmake openssh-server wg
 # fetch scripts and data repos
 RUN git clone https://github.com/LeventErkok/crackNum.git && git clone https://github.com/twobombs/thereminq.git && git clone https://github.com/twobombs/thereminq-bonsai.git
 
+# fetch firefly [test]
+RUN git clone https://github.com/ageller/Firefly.git
+
 # install bonsai
 RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt install -y git cmake-curses-gui && apt clean all
 RUN apt-get update && apt-get -y install time build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev freeglut3-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
