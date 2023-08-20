@@ -7,7 +7,7 @@ RUN apt-get update && apt-get -y install build-essential cmake openssh-server wg
 RUN git clone https://github.com/LeventErkok/crackNum.git && git clone https://github.com/twobombs/thereminq.git && git clone https://github.com/twobombs/thereminq-bonsai.git
 
 # fetch firefly [test]
-RUN git clone https://github.com/ageller/Firefly.git
+RUN git clone https://github.com/ageller/Firefly.git && cd Firefly && pip3 install -e .
 
 # install bonsai
 RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt install -y git cmake-curses-gui && apt clean all
