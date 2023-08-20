@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd Firefly/src/firefly/bin && ./Firefly
+
+tail -f /dev/null
