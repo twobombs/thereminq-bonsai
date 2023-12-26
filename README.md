@@ -1,4 +1,4 @@
-## Deploy Bonsai visualisation of Qrack output through containerisation
+## Deploy Bonsai visualisation of Qrack output through containerization
 
 
 Requirements: NVidia X, CUDA and NVidia-Docker2 on host 
