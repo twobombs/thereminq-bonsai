@@ -1,8 +1,8 @@
-## Deploy Bonsai visualisation of Qrack output 
+## Deploy Bonsai visualisation of Qrack output through containerisation
 
-[BONSAI](https://github.com/treecode/Bonsai)
+[BONSAI](https://github.com/treecode/Bonsai) thank you [Jeroen Bedorf](https://github.com/jbedorf)
 
-[QRACK](https://github.com/vm6502q/qrack)
+[QRACK](https://github.com/vm6502q/qrack) thank you [Daniel Strano](https://github.com/WrathfulSpatula)
 
 requirements: Running NVidia X, CUDA and NVidia-Docker on host 
 <br>
@@ -14,8 +14,10 @@ docker run --gpus all -d -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -p
 
 - If you get an error similar to `"Cannot connect to :0"` please look at http://wiki.ros.org/docker/Tutorials/GUI `$ xhost +local:root`
 - If you get a succesful initialisation followed by a coredump set : `ulimit -c unlimited` 
-- If you can't get NVidia GPU to render OpenGL content with an intel iGPU platform `apt install nvidia-prime` and set renderer to `prime-select nvidia`
+- If you can't get NVidia GPU to render OpenGL with other GPU `apt install nvidia-prime` and set renderer to `prime-select nvidia`
 - If you get an error similar to `"Cannot compile shader"` please select nvidia as your primary OpenGL source `prime-select nvidia`
+- If you get a timeout on the import of large models ( > 3M particles ) follow [this](https://nvidia.custhelp.com/app/answers/detail/a_id/3029/~/using-cuda-and-x) guide
+- If you want to import a smaller amount of particles due to VRAM limitations and/or performance issues use `--reducebodies=X` parameter
   
 ![Screenshot from 2023-08-08 13-00-13](https://github.com/twobombs/thereminq-bonsai/assets/12692227/c54187c1-9ab6-4811-9153-ab52cc886def)
 
