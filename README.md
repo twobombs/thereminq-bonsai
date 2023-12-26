@@ -4,7 +4,7 @@
 Requirements: NVidia X, CUDA and NVidia-Docker2 on host 
 <br>
 
-Edit, creates and deploys ThereminQ Bonsai visualisations
+Edit, creates and deploys ThereminQ visualisations
 ```bash
 docker run --gpus all -d -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -p 6080:6080 -v /run/user/1000/gdm/Xauthority:/root/.Xauthority -h $HOSTNAME twobombs/thereminq-bonsai 
 ````
