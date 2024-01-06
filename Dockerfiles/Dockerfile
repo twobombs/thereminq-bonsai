@@ -36,7 +36,8 @@ RUN apt-get -y remove xfce4-power-manager
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
 # fetch scripts and data repos
-RUN git clone --depth=1 https://github.com/LeventErkok/crackNum.git && git clone --depth=1 https://github.com/twobombs/thereminq.git && git clone --depth=1 https://github.com/twobombs/thereminq-bonsai.git
+RUN git clone --depth=1 https://github.com/LeventErkok/crackNum.git && git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/buildscripts && chmod 744 *
+RUN git clone --depth=1 https://github.com/twobombs/thereminq-bonsai.git && cd /thereminq-bonsai/buildscripts && chmod 744 *
 
 # install bonsai
 RUN apt update && export DEBIAN_FRONTEND=noninteractive && apt install -y git cmake-curses-gui && apt clean all
