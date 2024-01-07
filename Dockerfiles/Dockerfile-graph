@@ -1,6 +1,6 @@
 FROM twobombs/thereminq-bonsai
 
-RUN cd /thereminq/buildscripts && /usr/bin/time ./10k48.sh
+RUN cd /thereminq-bonsai/buildscripts && /usr/bin/time ./10k48.sh
 
 EXPOSE 22 6080 8801-8811
 ENTRYPOINT /root/run-bonsai-graph
