@@ -1,4 +1,4 @@
-FROM twobombs/thereminq-bonsai
+FROM twobombs/thereminq-bonsai:graph
 
 # install glvnd ( temp key fix )
 RUN apt-get clean && \
