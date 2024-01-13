@@ -57,4 +57,3 @@ do
 
 done
 
-cd /thereminq-bonsai/buildscripts && /usr/bin/time ./10k48.sh
