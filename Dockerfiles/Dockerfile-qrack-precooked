@@ -1,6 +1,7 @@
 FROM twobombs/thereminq-bonsai
 
 RUN cd  /qrack/_build && /usr/bin/time /thereminq-bonsai/buildscripts/qrack-precooked.sh
+RUN cd /thereminq-bonsai/buildscripts && /usr/bin/time ./10k48.sh
 RUN cd /thereminq-bonsai/buildscripts && /usr/bin/time ./graph-precooked.sh
 
 EXPOSE 22 6080 8801-8811
