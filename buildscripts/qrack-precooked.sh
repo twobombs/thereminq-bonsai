@@ -28,3 +28,5 @@ echo $run
 ./benchmarks --optimal-cpu --layer-qtensornetwork --proc-bdt-hybrid --devices=0,0,0,0 --use-host-dma --measure-shots=100 --single -m=27 --benchmark-depth=33 --samples=1 --measure-output=/var/log/qrack/"measured_cosmos_graph_27_$run-$(date +%F_%R_%S).log" test_qft_cosmology
 
 done
+
+cd /thereminq-bonsai/buildscripts && /usr/bin/time ./10k48.sh
