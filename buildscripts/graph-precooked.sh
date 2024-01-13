@@ -51,10 +51,9 @@ do
 	#
 	for c26 in $(< x_26_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c26/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_26_$(echo $a)_1.fhex &
 	#
-	for c27 in $(< x_27_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c27/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_27_$(echo $a)_1.fhex &
+	for c27 in $(< x_27_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c27/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_27_$(echo $a)_1.fhex
 	#
 	echo "done done"
 
 done
 
-./10k48.sh
