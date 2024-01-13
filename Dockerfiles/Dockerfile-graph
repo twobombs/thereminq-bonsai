@@ -1,4 +1,4 @@
-FROM twobombs/thereminq-bonsai
+FROM twobombs/thereminq-bonsai:qrack-precooked
 
 RUN cd /thereminq-bonsai/buildscripts && /usr/bin/time ./10k48.sh
 
