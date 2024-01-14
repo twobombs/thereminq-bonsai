@@ -33,7 +33,7 @@ RUN apt-get -y remove xfce4-power-manager
 ############ end of desktop insert ##############
 
 # install features
-RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+RUN apt-get update && apt-get -y install build-essential cmake datamash openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
 # fetch scripts and data repos
 RUN git clone --depth=1 https://github.com/LeventErkok/crackNum.git && git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/buildscripts && chmod 744 *
