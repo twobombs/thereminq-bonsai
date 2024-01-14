@@ -10,7 +10,8 @@ do
 
 	    cat /var/log/qrack/measured_cosmos_graph_$(echo $b)_$(echo $a)-* | grep -v 'TestName' > $(echo $b)_$(echo $a)
 	    head -n 100  $(echo $b)_$(echo $a) > x_$(echo $b)_$(echo $a)_1 &
-
+	    cat x_$(echo $b)_$(echo $a)_1 | datamash max 1 mean 1 median 1 > cat x_$(echo $b)_$(echo $a)_1_data
+   
 	done
 
 	for c8 in $(< x_8_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c8/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_8_$(echo $a)_1.fhex &
