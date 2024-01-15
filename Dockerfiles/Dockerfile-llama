@@ -26,7 +26,7 @@ RUN ln -s wizardmath-7b-v1.1.Q2_K.gguf /llama-clblast/models/wizardmath-7b-v1.1.
 RUN ln -s wizardmath-7b-v1.1.Q2_K.gguf /llama-openblas/models/wizardmath-7b-v1.1.Q2_K.gguf
 
 # test build
-RUN cd llama.cpp && ./main -m /llama.cpp/models/wizardmath-7b-v1.1.Q2_K.gguf -p "predict the next median using the following numbers : 10 20 30" -n 512
+RUN cd llama.cpp && ./main -m ../wizardmath-7b-v1.1.Q2_K.gguf -p "predict the next median using the following numbers : 10 20 30" -n 512
 
 EXPOSE 22 6080 8801-8811
 ENTRYPOINT /root/run-bonsai-graph
