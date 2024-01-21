@@ -5,7 +5,7 @@ tipsy=1048575
 for a in {1..4}
 
 do
-    for b in {8..27}
+    for b in {8..28}
         do
 
 	    cat /var/log/qrack/measured_cosmos_graph_$(echo $b)_$(echo $a)-* | grep -v 'TestName' > $(echo $b)_$(echo $a)
@@ -53,6 +53,8 @@ do
 	for c26 in $(< x_26_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c26/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_26_$(echo $a)_1.fhex &
 	#
 	for c27 in $(< x_27_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c27/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_27_$(echo $a)_1.fhex
+	#
+ 	for c28 in $(< x_28_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c28/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_28_$(echo $a)_1.fhex
 	#
 	echo "done done"
 
