@@ -62,8 +62,9 @@ yes 00000000 | head -n $(wc -l < measuredq.fhex) > displace.fhex
 # was points is nu measuredq....
 echo $(wc -l < measuredq.fhex ) > pointsq.dec
 printf '%08X\n' $(< pointsq.dec) > pointsq.hex
-
 head -n $(wc -l < z10k.fhex) > zxk.fhex
+
+# need to add zxk.fhex matrix of repeat point values as Y axis
 
 #
 # ==== assemble/weave hex, convert to bin =========
