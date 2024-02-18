@@ -36,7 +36,7 @@ RUN apt-get -y remove xfce4-power-manager
 RUN apt-get update && apt-get -y install build-essential cmake datamash openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 
 # fetch scripts and data repos
-RUN git clone --depth=1 https://github.com/LeventErkok/crackNum.git && git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/buildscripts && chmod 744 *
+RUN git clone --depth=1 https://github.com/twobombs/thereminq.git && cd /thereminq/buildscripts && chmod 744 *
 RUN git clone --depth=1 https://github.com/twobombs/thereminq-bonsai.git && cd /thereminq-bonsai/buildscripts && chmod 744 *
 
 # install bonsai
@@ -77,6 +77,8 @@ RUN cd /qrack128/include && mkdir CL && cd /qrack128 && mkdir _build && cd _buil
 # install haskell, z3, num-utils, crackNum + dependancies
 RUN apt-get install -y z3 num-utils && apt clean all
 RUN curl -sSL https://get.haskellstack.org/ | sh
+# RUN git clone --depth=1 https://github.com/LeventErkok/crackNum.git
+RUN wget https://github.com/LeventErkok/crackNum/archive/refs/tags/v3.2.tar.gz && tar -xzvf v3.2.tar.gz && mv crackNum-3.2 crackNum
 RUN cd crackNum && stack path --local-bin && stack setup && stack init && stack build && stack install && stack clean && rm -R /crackNum
 
 # node run & benchmark script, make runnable 
