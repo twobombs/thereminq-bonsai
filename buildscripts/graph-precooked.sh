@@ -63,9 +63,11 @@ yes 00000000 | head -n $(wc -l < measuredq.fhex) > displace.fhex
 echo $(wc -l < measuredq.fhex ) > pointsq.dec
 printf '%08X\n' $(< pointsq.dec) > pointsq.hex
 
+head -n $(wc -l < z10k.fhex) > zxk.fhex
+
 #
 # ==== assemble/weave hex, convert to bin =========
-paste time.hex pointsq.hex ndim.hex nsph.hex ndark.hex pointsq.hex version.hex measuredm.fhex measuredmx.fhex measuredmy.fhex z10k9.fhex displace.fhex displace.fhex displace.fhex displace.fhex displace.fhex measuredmx.fhex z10k9.fhex > graph.hex
+paste time.hex pointsq.hex ndim.hex nsph.hex ndark.hex pointsq.hex version.hex measuredm.fhex measuredmx.fhex measuredmy.fhex zxk.fhex displace.fhex displace.fhex displace.fhex displace.fhex displace.fhex measuredmx.fhex zxk.fhex > graph.hex
 # convert float hex string data as a bin file
 xxd -r -p graph.hex graph.bin
 # aaaand convert to little indian
