@@ -32,7 +32,7 @@ do
 	for c23 in $(< x_23_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c23/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_23_$(echo $a)_1.fhex
 	for c24 in $(< x_24_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c24/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_24_$(echo $a)_1.fhex &
 	for c25 in $(< x_25_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c25/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_25_$(echo $a)_1.fhex
-	for c26 in $(< x_26_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c26/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_26_$(echo $a)_1.fhex &
+	for c26 in $(< x_26_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c26/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_26_$(echo $a)_1.fhex
 	for c27 in $(< x_27_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c27/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_27_$(echo $a)_1.fhex
  	for c28 in $(< x_28_$(echo $a)_1); do /root/.local/bin/crackNum -f sp $(echo $c28/$tipsy | bc -l) | grep "Hex layout" | tr -d ' ' | tr -d 'Hexlayout:' ; done > x_28_$(echo $a)_1.fhex
 	echo "done done"
