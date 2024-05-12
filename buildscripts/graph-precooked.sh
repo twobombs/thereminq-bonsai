@@ -52,6 +52,7 @@ echo "00010000" > version.hex
 
 # ==== create value matrix for points, weight and height =========
 for a in {1..4}
+	do
 	cat x_8_$(echo $a)_1.fhex x_9_$(echo $a)_1.fhex x_10_$(echo $a)_1.fhex x_11_$(echo $a)_1.fhex x_12_$(echo $a)_1.fhex x_13_$(echo $a)_1.fhex x_14_$(echo $a)_1.fhex x_15_$(echo $a)_1.fhex x_16_$(echo $a)_1.fhex x_17_$(echo $a)_1.fhex x_18_$(echo $a)_1.fhex x_19_$(echo $a)_1.fhex x_20_$(echo $a)_1.fhex x_21_$(echo $a)_1.fhex x_22_$(echo $a)_1.fhex x_23_$(echo $a)_1.fhex x_24_$(echo $a)_1.fhex x_25_$(echo $a)_1.fhex x_26_$(echo $a)_1.fhex x_27_$(echo $a)_1.fhex x_28_$(echo $a)_1.fhex x_28_$(echo $a)_1.fhex >> measuredq.fhex
 done
 
