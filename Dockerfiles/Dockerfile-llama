@@ -18,8 +18,8 @@ RUN cd llama-openblas && cmake . && make LLAMA_OPENBLAS=1 all
 RUN cd llama-cublas && cmake -DGGML_CUBLAS=ON . && make LLAMA_CUBLAS=1 all
 RUN cd llama-clblast && cmake -DGGML_CLBLAST=ON . && make LLAMA_CLBLAST=1 all
 
+# RUN wget https://huggingface.co/Twobombs/llama31-8B/resolve/main/Meta-Llama3.1-8B-q3_K.gguf
 RUN touch Meta-Llama3.1-8B-q3_K.gguf
-
 
 EXPOSE 22 6080 8801-8811
 ENTRYPOINT /root/run-bonsai-graph
