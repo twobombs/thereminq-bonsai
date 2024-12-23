@@ -13,7 +13,7 @@ startxfce4 &
 
 export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
-export DISPLAY=:0&&exo-open --launch TerminalEmulator
+export DISPLAY=:0&&exo-open --launch TerminalEmulator &
 
 cd /Bonsai/runtime && ./bonsai2_slowdust -t 0.00001 --displayfps -T 1000 -i model3_child_compact.tipsy
 
