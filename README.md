@@ -1,3 +1,9 @@
+# ThereminQ
+
+ThereminQ is a suite of tools designed to control, extend, and visualize data from quantum circuits. It uses Qrack, ELK, Tipsy, Jupyter, CUDA, and OpenCL accelerators to provide a powerful environment for quantum simulation and visualization.
+
+For more detailed information, please see the [documentation.md](documentation.md) file.
+
 ## Deploy Bonsai visualisation of Qrack output through containerization
 
 ![Screenshot from 2021-10-16 11-09-00](https://github.com/twobombs/thereminq-bonsai/assets/12692227/22aa6df4-bf92-49ac-a6d4-db14363f6356)
