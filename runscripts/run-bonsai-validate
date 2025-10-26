@@ -12,7 +12,7 @@ nvidia-smi
 startxfce4 &
 
 export DISPLAY=:0&&xterm -e "xset s off" &
-export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
+export DISPLAY=:0&&xterm -bg black -fg white -e "neofetch && tail -f /dev/null" &
 export DISPLAY=:0&&exo-open --launch TerminalEmulator &
 
 cd /Bonsai/runtime && ./bonsai2_slowdust -t 0.00001 --displayfps -T 1000 -i /thereminq/buildscripts/validation_method_comparison_all/tipsy-csv_hexdump.bin
