@@ -1,4 +1,6 @@
-# ThereminQ
+<img width="5978" height="1578" alt="468390747-272a9fdc-d924-4771-850c-d100f23562f6 (1)" src="https://github.com/user-attachments/assets/e11bff6a-83b4-4a03-b362-e872328c3795" />
+
+# ThereminQ-Bonsai
 
 ThereminQ is a suite of tools designed to control, extend, and visualize data from quantum circuits. It uses Qrack, ELK, Tipsy, Jupyter, CUDA, and OpenCL accelerators to provide a powerful environment for quantum simulation and visualization.
 
